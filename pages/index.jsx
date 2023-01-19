@@ -7,7 +7,7 @@ export default function Home({ products }) {
   return (
     <>
       <Head>
-        <title>Shop | Home</title>
+        <title>Shop</title>
       </Head>
       <div className='container'>
         <h2 className={styles.title}>All Products</h2>
