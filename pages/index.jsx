@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Header.module.css";
+import Button from "@/components/button";
 
 export default function Home({ products }) {
   return (
@@ -29,7 +30,16 @@ export default function Home({ products }) {
                   <h3>{product.title}</h3>
                   <div className={styles.price_add_to_cart}>
                     <h3>Price: {product.price}€</h3>
-                    <button className='btn'>Add to cart 🛒</button>
+                    <Button
+                      className='btn snipcart-add-item'
+                      id={product.id}
+                      price={product.price}
+                      slug={product.title}
+                      image={product.image}
+                      name={product.title}
+                    >
+                      Add to cart 🛒
+                    </Button>
                   </div>
                 </div>
               </div>

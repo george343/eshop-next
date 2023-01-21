@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../../../styles/SingleProduct.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import Button from "@/components/button";
 
 const SingleProduct = ({ product }) => {
   return (
@@ -35,7 +36,16 @@ const SingleProduct = ({ product }) => {
               reviews.
             </h4>
           </div>
-          <button className='btn'>Add to cart 🛒</button>
+          <Button
+            className='btn snipcart-add-item'
+            id={product.id}
+            price={product.price}
+            slug={product.title}
+            image={product.image}
+            name={product.title}
+          >
+            Add to cart 🛒
+          </Button>
           <div className={styles.home_link}>
             <Link href='/'>
               <i class={styles.arrow_right}></i>Back to Products
