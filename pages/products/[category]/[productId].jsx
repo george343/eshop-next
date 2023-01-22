@@ -5,10 +5,18 @@ import Link from "next/link";
 import Button from "@/components/button";
 
 const SingleProduct = ({ product }) => {
+  if (!product) {
+    return (
+      <div className={styles.single_container}>
+        <h1>Getting the item...</h1>
+      </div>
+    );
+  }
+
   return (
     <>
       <Head>
-        <title>product</title>
+        <title>{product.title}</title>
       </Head>
       <div className={styles.single_container}>
         <div className={styles.left_section}>
@@ -66,9 +74,9 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps(context) {
   const response = await fetch(
-    `https://fakestoreapi.com/products/${params.productId}`
+    `https://fakestoreapi.com/products/${context.params.productId}`
   );
   const product = await response.json();
 
