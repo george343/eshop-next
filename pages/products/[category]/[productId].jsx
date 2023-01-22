@@ -8,7 +8,7 @@ const SingleProduct = ({ product }) => {
   return (
     <>
       <Head>
-        <title>{product.title}</title>
+        <title>product</title>
       </Head>
       <div className={styles.single_container}>
         <div className={styles.left_section}>
