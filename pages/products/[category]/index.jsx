@@ -29,9 +29,6 @@ const Category = ({ category }) => {
                   <h3 className='font-bold text-lg'>{cat.title}</h3>
                   <div className='flex flex-col'>
                     <h3>Price: {cat.price}€</h3>
-                    <button className='snipcart-add-item bg-purple-800 text-white inline-block py-4 px-5 rounded cursor-pointer transition duration-300 border-none hover:bg-purple-900'>
-                      Add to cart 🛒
-                    </button>
                   </div>
                 </div>
               </div>
