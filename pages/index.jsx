@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../styles/Header.module.css";
 import Button from "@/components/button";
 
 export default function Home({ products }) {
@@ -10,28 +9,28 @@ export default function Home({ products }) {
       <Head>
         <title>Shop</title>
       </Head>
-      <div className='container'>
-        <h2 className={styles.title}>All Products</h2>
-        <div className={styles.products_container}>
+      <div className='container mx-auto mb-16 sm:px-12'>
+        <h2 className='my-12 text-2xl font-bold'>All Products</h2>
+        <div className='grid grid-cols-1 gap-8 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2'>
           {products.map((product) => {
             return (
-              <div key={product.id} className={styles.product_card}>
+              <div key={product.id} className='p-5'>
                 <Link href={`/products/${product.category}/${product.id}`}>
-                  <div className={styles.product_img}>
+                  <div className='h-64 w-full flex justify-center rounded cursor-pointer'>
                     <Image
                       src={product.image}
                       width={300}
                       height={300}
                       alt={product.title}
+                      className='object-contain hover:object-cover hover:transition-transform hover:duration-200 hover:scale-110'
                     />
                   </div>
                 </Link>
-                <div className={styles.product_content}>
-                  <h3>{product.title}</h3>
-                  <div className={styles.price_add_to_cart}>
-                    <h3>Price: {product.price}€</h3>
+                <div className='h-1/2 flex flex-col justify-between'>
+                  <h3 className='font-bold text-lg'>{product.title}</h3>
+                  <div className='flex flex-col'>
+                    <h3 className='mx-1'>Price: {product.price}€</h3>
                     <Button
-                      className='btn snipcart-add-item'
                       id={product.id}
                       price={product.price}
                       slug={product.title}
@@ -51,13 +50,11 @@ export default function Home({ products }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const response = await fetch("https://fakestoreapi.com/products");
   const products = await response.json();
 
   return {
-    props: {
-      products,
-    },
+    props: { products },
   };
 }

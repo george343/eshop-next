@@ -1,8 +1,6 @@
-import styles from "../styles/Footer.module.css";
-
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
+    <footer className='w-full bg-purple-800 text-white text-center p-5'>
       <p>All Rights Reserved. Copyright © 2023</p>
     </footer>
   );
