@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/button";
 
-export default function Home({ products }) {
+export default function Home({ products, categories }) {
   return (
     <>
       <Head>
@@ -11,6 +11,20 @@ export default function Home({ products }) {
       </Head>
       <div className='container mx-auto mb-16 sm:px-12'>
         <h2 className='my-12 text-2xl font-bold'>All Products</h2>
+        <div className='flex w-1/2 container m-auto gap-4 items-center h-8'>
+          <h2 className='text-2xl'>Categories:</h2>
+          {categories.map((category) => {
+            return (
+              <Link
+                key={category.id}
+                className='text-lg my-2 hover:border-b-2 hover:border-purple-800 ease-in-out duration-200'
+                href={`/products/${category}`}
+              >
+                {category}
+              </Link>
+            );
+          })}
+        </div>
         <div className='grid grid-cols-1 gap-8 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2'>
           {products.map((product) => {
             return (
@@ -50,11 +64,18 @@ export default function Home({ products }) {
   );
 }
 
-export async function getServerSideProps() {
-  const response = await fetch("https://fakestoreapi.com/products");
-  const products = await response.json();
+export async function getServerSideProps(context) {
+  const responseProducts = await fetch("https://fakestoreapi.com/products");
+  const products = await responseProducts.json();
+
+  const responseCategories = await fetch(
+    "https://fakestoreapi.com/products/categories"
+  );
+  const categories = await responseCategories.json();
+
+  console.log(categories);
 
   return {
-    props: { products },
+    props: { products, categories },
   };
 }

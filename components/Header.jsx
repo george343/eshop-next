@@ -2,10 +2,10 @@ import Link from "next/link";
 
 const Header = () => {
   const links = [
-    { title: "Mens clothing", link: "/products/men's%20clothing" },
-    { title: "Womens clothing", link: "/products/women's%20clothing" },
-    { title: "Electronics", link: "/products/electronics" },
-    { title: "Jewelery", link: "/products/jewelery" },
+    { title: "Mens clothing", link: "men's%20clothing" },
+    { title: "Womens clothing", link: "women's%20clothing" },
+    { title: "Electronics", link: "electronics" },
+    { title: "Jewelery", link: "jewelery" },
   ];
 
   return (
@@ -16,18 +16,18 @@ const Header = () => {
             <p>E-Shop</p>
           </div>
         </Link>
+
         <div className='float-left overflow-hidden'>
           <button className='border-none outline-none text-white px-4 py-3 bg-inherit m-0 text-lg'>
             Categories
-            <i className='ml-2 p-1 inline-block rotate-45 border-r-2 border-b-2 border-white align-middle'></i>
           </button>
-          <div className='hidden absolute bg-purple-800 min-w-max shadow-black/20 z-10 hover:block'>
+          <div className='hidden absolute bg-purple-800 min-w-max shadow-black/20 z-10'>
             {links.map((link) => {
               return (
                 <Link
                   key={link.title}
                   className='float-none text-white py-3 px-4 block text-center decoration-none hover:bg-white hover:text-purple-800'
-                  href={link.link}
+                  href={`/products/${link.link}`}
                 >
                   {link.title}
                 </Link>
