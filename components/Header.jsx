@@ -17,11 +17,11 @@ const Header = () => {
           </div>
         </Link>
 
-        <div className='float-left overflow-hidden'>
+        <div className='float-left overflow-hidden group'>
           <button className='border-none outline-none text-white px-4 py-3 bg-inherit m-0 text-lg'>
             Categories
           </button>
-          <div className='hidden absolute bg-purple-800 min-w-max shadow-black/20 z-10'>
+          <div className='hidden group-hover:block absolute bg-purple-800 min-w-max shadow-black/20 z-10'>
             {links.map((link) => {
               return (
                 <Link

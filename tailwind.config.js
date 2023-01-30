@@ -12,8 +12,8 @@ module.exports = {
         'background-col': '#f4f4f7'
 
       },
-      fonts: {'font-nurito': 'font-family: "Nunito Sans", sans-serif'}
-
+      fonts: {'font-nurito': 'font-family: "Nunito Sans", sans-serif'},
+      display: ["group-hover"],
     },
   },
   plugins: [],
