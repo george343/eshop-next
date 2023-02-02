@@ -54,12 +54,12 @@ export async function getServerSideProps(context) {
   const responseProducts = await fetch("https://fakestoreapi.com/products");
   const products = await responseProducts.json();
 
-  const responseCategories = await fetch(
-    "https://fakestoreapi.com/products/categories"
-  );
-  const categories = await responseCategories.json();
+  // const responseCategories = await fetch(
+  //   "https://fakestoreapi.com/products/categories"
+  // );
+  // const categories = await responseCategories.json();
 
   return {
-    props: { products, categories },
+    props: { products },
   };
 }
